@@ -18,6 +18,15 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    # Clean npm cache (optional but recommended)
+    npm cache clean --force
+
+    # Install dependencies ignoring peer dependency conflicts
+    npm install --legacy-peer-deps
+
+    # Ensure env-cmd is installed
+    npm install env-cmd --save-dev
+
+    # Run the build
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'npm install and build (with fixes)'
