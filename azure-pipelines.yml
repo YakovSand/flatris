@@ -7,7 +7,9 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'SelfHostedAgents'  # Name of self-hosted agent pool
+  demands:
+    - agent.os -equals Linux  # Optional: enforce OS type
 
 steps:
 - task: NodeTool@0
