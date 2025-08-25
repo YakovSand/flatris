@@ -16,18 +16,6 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    # Clean npm cache (optional)
-    npm cache clean --force
-
-    # Upgrade eslint-plugin-import to match current eslint version
-    npm install eslint-plugin-import@^2.25.5 --save-dev
-
-    # Install dependencies ignoring peer dependency conflicts
     npm install --legacy-peer-deps
-
-    # Ensure env-cmd is installed
-    npm install env-cmd --save-dev
-
-    # Run build using inline environment variables
     AZP_URL=$(AZP_URL) AZP_TOKEN=$(AZP_TOKEN) AZP_POOL=$(AZP_POOL) npm run build
-  displayName: 'Install, resolve dependencies, and build'
+  displayName: 'Install dependencies and build'
